@@ -1,0 +1,2 @@
+# notice_you_nextjs
+noticeyou项目next版本，tailwind学习
