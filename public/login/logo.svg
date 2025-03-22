@@ -1,0 +1,35 @@
+<!-- public/icons.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- 项目 Logo：NOTICE-YOU -->
+  <symbol id="logo" viewBox="0 0 163 32">
+    <g id="Layer_1">
+      <title>Layer 1</title>
+      <text
+        stroke="#9ACEE6"
+        font-weight="bold"
+        font-style="italic"
+        stroke-dasharray="5,2,2,2,2,2"
+        opacity="0.86"
+        xml:space="preserve"
+        text-anchor="start"
+        font-family="'Alegreya'"
+        font-size="24"
+        y="24.06015"
+        x="4"
+        fill="#D3BEE7"
+      >
+        NOTICE-YOU
+      </text>
+    </g>
+  </symbol>
+
+  <!-- 可以继续添加更多图标 -->
+  <!-- <symbol id="icon-user" viewBox="0 0 24 24">
+    <circle cx="12" cy="8" r="4" fill="#D3BEE7" />
+    <path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="#9ACEE6" />
+  </symbol> -->
+
+</svg>
+
+
+

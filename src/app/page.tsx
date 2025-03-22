@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 
 export default function page() {
-  //判断是否登录
+  //判断是否登录 
   /*
    * if(login){
    * homepage

@@ -1,4 +1,3 @@
-// components/Icon.tsx
 "use client";
 
 import { useEffect } from "react";
@@ -28,7 +27,7 @@ const Icon: React.FC<IconProps> = ({
   useEffect(() => {
     // 动态加载 IconFont 的 JS 文件
     const script = document.createElement("script");
-    script.src = "//at.alicdn.com/t/c/font_4631415_8l4cnbuqhmf.js";
+    script.src = "//at.alicdn.com/t/c/font_4631415_13046abjt03.js";
     document.body.appendChild(script);
 
     return () => {

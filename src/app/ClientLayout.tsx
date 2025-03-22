@@ -1,124 +1,178 @@
 // app/ClientLayout.tsx
 "use client";
 
-import { useState } from "react";
-import type { MenuProps } from "antd";
-import { Layout, Menu, ConfigProvider, theme, Switch } from "antd";
-import { useRouter, usePathname } from "next/navigation";
 import Icon from "@/components/Icon";
-
+import React, { useState } from "react";
+import type { MenuProps } from "antd";
+import { Layout, Menu, Button, ConfigProvider, Switch } from "antd";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import lightTheme from "@/theme/lightTheme";
 import darkTheme from "@/theme/darkTheme";
-const { Header, Content, Footer, Sider } = Layout;
+import { useRouter, usePathname } from "next/navigation";
 
-const siderStyle: React.CSSProperties = {
-  overflow: "auto",
-  height: "100vh",
-  position: "sticky",
-  insetInlineStart: 0,
-  top: 0,
-  bottom: 0,
-  scrollbarWidth: "thin",
-  scrollbarGutter: "stable",
-};
-
-//定义路由菜单项
+const { Header, Sider, Content } = Layout;
+// 定义需要隐藏导航栏的路由
+const hideNavbarRoutes = ["/not-found", "/login", "/register", "/index"];
 
 const items: MenuProps["items"] = [
   {
-    key: "/",
-    icon: <Icon type="icon-mulu" />,
-    label: "Home",
+    key: "/user",
+    icon: <Icon type="icon-zhanghu" />,
+    label: "用户",
   },
   {
     key: "/task",
     icon: <Icon type="icon-mulu" />,
     label: "Task",
   },
+  {
+    key: "/hobit",
+    icon: <Icon type="icon-mulu" />,
+    label: "hobit",
+  },
+  {
+    key: "/focus",
+    icon: <Icon type="icon-mulu" />,
+    label: "Focus",
+  },
+  {
+    key: "/calendar",
+    icon: <Icon type="icon-mulu" />,
+    label: "Calendar",
+  },
+  {
+    key: "/group",
+    icon: <Icon type="icon-mulu" />,
+    label: "Group",
+  },
+  {
+    key: "/message",
+    icon: <Icon type="icon-mulu" />,
+    label: "Message",
+  },
+  {
+    key: "/publish",
+    icon: <Icon type="icon-mulu" />,
+    label: "Publish",
+  },
 ];
 
-export default function ClientLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+//检查是否登录
+//定义导航点击事件
+// 处理菜单点击事件
 
+//实现路由记忆
 
-  //检查是否登录
-  //定义导航点击事件
-  // 处理菜单点击事件
+import type { ReactNode } from "react";
+
+interface ClientLayoutProps {
+  readonly children: ReactNode;
+}
+
+export default function ClientLayout({ children }: ClientLayoutProps) {
+  const [collapsed, setCollapsed] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false); // 控制主题状态
   const router = useRouter(); // 获取路由对象
   const pathname = usePathname(); // 获取当前路由路径
+  // 检查当前路由是否需要隐藏导航栏
+  const shouldHideNavbar = hideNavbarRoutes.includes(pathname);
 
   const handleMenuClick: MenuProps["onClick"] = (e) => {
     router.push(e.key); // 跳转到对应路由
   };
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+  // 切换主题
   const toggleTheme = () => {
     setIsDarkMode((prev) => !prev);
+    document.documentElement.classList.toggle("dark"); // 切换 Tailwind 的 dark 类
   };
-  //实现路由记忆
-
-  // 定义需要隐藏导航栏的路由
-  const hideNavbarRoutes = ["/not-found", "/login", "/signup"];
-
-  // 检查当前路由是否需要隐藏导航栏
-  const shouldHideNavbar = hideNavbarRoutes.includes(pathname);
 
   return (
     <ConfigProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <Layout hasSider>
-        {/* 根据路由决定是否显示 Sider */}
+      <Layout className="h-full flex">
+        {/* 左侧 Sider */}
         {!shouldHideNavbar && (
-          <Sider style={siderStyle}>
-            <div className="demo-logo-vertical" />
+          <Sider
+            collapsible
+            collapsed={collapsed}
+            onCollapse={(value) => setCollapsed(value)}
+            trigger={null}
+            width={150}
+            collapsedWidth={80}
+            className="overflow-auto h-full dark:bg-background-primary bg-slate-50"
+          >
+            {!collapsed && (
+              <div>
+                <svg
+                  width="120"
+                  height="20"
+                  viewBox="0 0 163 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <text
+                    stroke="#9ACEE6"
+                    fontWeight="bold"
+                    fontStyle="italic"
+                    strokeDasharray="5,2,2,2,2,2"
+                    opacity="0.86"
+                    xmlSpace="preserve"
+                    textAnchor="start"
+                    fontFamily="sans-serif"
+                    fontSize="24"
+                    y="24.06015"
+                    x="4"
+                    fill="#D3BEE7"
+                  >
+                    NOTICE-YOU
+                  </text>
+                </svg>
+              </div>
+            )}
             <Menu
-              mode="inline"
               selectedKeys={[pathname]} // 根据当前路由高亮菜单项
-              onClick={handleMenuClick} // 绑定点击事件
+              theme={isDarkMode ? "dark" : "light"} // 根据主题设置 Menu 的主题
+              mode="inline"
               items={items}
+              onClick={handleMenuClick} // 绑定点击事件
             />
           </Sider>
         )}
-        <Layout>
-          {/* Header 可以根据需要隐藏或显示 */}
+
+        <Layout className="flex-1">
           {!shouldHideNavbar && (
-            <Header style={{ padding: 0, background: colorBgContainer, display:"flex", flexDirection:"row-reverse"}}>
-              <Switch
-                checkedChildren="light"
-                unCheckedChildren="dark"
-                defaultChecked
-                onChange={toggleTheme}
-              />
-              {/* 判断是否登录  登录不显示登录按钮   未登录显示登录 */}
-
-            </Header>
-          )}
-
-          <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-            <div
+            <Header
               style={{
-                padding: 24,
-                textAlign: "center",
-                background: colorBgContainer,
-                borderRadius: borderRadiusLG,
+                padding: 0,
+                background: isDarkMode ? "#1a1a1a" : "#ffffff", // 使用 Tailwind 的背景色
+                display: "flex",
+                justifyContent: "space-between",
               }}
             >
-              {/* 内容区域 */}
-              <div>{children}</div>
-            </div>
-          </Content>
-
-          {/* Footer 可以根据需要隐藏或显示 */}
-          {!shouldHideNavbar && (
-            <Footer style={{ textAlign: "center" }}>
-              Ant Design ©{new Date().getFullYear()} Created by Ant UED
-            </Footer>
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  color: isDarkMode ? "#ffffff" : "#333333", // 使用 Tailwind 的文字颜色
+                }}
+              />
+              <Switch
+                checkedChildren="dark"
+                unCheckedChildren="light"
+                checked={isDarkMode}
+                onChange={toggleTheme}
+              />
+            </Header>
           )}
+          {/* Content */}
+          <Content
+            style={{
+              background: isDarkMode ? "#1a1a1a" : "#ffffff", // 使用 Tailwind 的背景色
+              minHeight: 280,
+              color: isDarkMode ? "#ffffff" : "#333333", // 使用 Tailwind 的文字颜色
+            }}
+          >
+            {children}
+          </Content>
         </Layout>
       </Layout>
     </ConfigProvider>
