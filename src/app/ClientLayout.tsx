@@ -1,7 +1,7 @@
 // app/ClientLayout.tsx
 "use client";
 
-import Icon from "@/components/Icon";
+import MyIcon from "@/components/MyIcon";
 import React, { useState } from "react";
 import type { MenuProps } from "antd";
 import { Layout, Menu, Button, ConfigProvider, Switch } from "antd";
@@ -17,42 +17,42 @@ const hideNavbarRoutes = ["/not-found", "/login", "/register", "/index"];
 const items: MenuProps["items"] = [
   {
     key: "/user",
-    icon: <Icon type="icon-zhanghu" />,
+    icon: <MyIcon type="Myicon-zhanghu" />,
     label: "用户",
   },
   {
     key: "/task",
-    icon: <Icon type="icon-mulu" />,
+    icon: <MyIcon type="Myicon-mulu" />,
     label: "Task",
   },
   {
     key: "/hobit",
-    icon: <Icon type="icon-mulu" />,
+    icon: <MyIcon type="Myicon-mulu" />,
     label: "hobit",
   },
   {
     key: "/focus",
-    icon: <Icon type="icon-mulu" />,
+    icon: <MyIcon type="Myicon-mulu" />,
     label: "Focus",
   },
   {
     key: "/calendar",
-    icon: <Icon type="icon-mulu" />,
+    icon: <MyIcon type="Myicon-mulu" />,
     label: "Calendar",
   },
   {
     key: "/group",
-    icon: <Icon type="icon-mulu" />,
+    icon: <MyIcon type="Myicon-mulu" />,
     label: "Group",
   },
   {
     key: "/message",
-    icon: <Icon type="icon-mulu" />,
+    icon: <MyIcon type="Myicon-mulu" />,
     label: "Message",
   },
   {
     key: "/publish",
-    icon: <Icon type="icon-mulu" />,
+    icon: <MyIcon type="Myicon-mulu" />,
     label: "Publish",
   },
 ];

@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, Flex } from "antd";
-import Icon from "@/components/Icon";
+import Icon from "@/components/MyIcon";
 // import { useState } from "react";
 // 登录方法
 // const handleRegister = () => {

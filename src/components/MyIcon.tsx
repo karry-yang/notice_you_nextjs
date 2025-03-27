@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-
+import{IconProps} from "@/types/IconProps";
 /**
  * @description 图标组件
  * @param type string类型  图标类型
@@ -10,24 +10,21 @@ import { useEffect } from "react";
  * @param  onClick  function类型 点击事件
  */
 
-interface IconProps {
-  type: string;
-  className?: string;
-  style?: React.CSSProperties;
-  onClick?: () => void;
-}
+
 
 //React.FC 是 React 提供的泛型类型，用于定义函数组件。
-const Icon: React.FC<IconProps> = ({
+const MyIcon: React.FC<IconProps> = ({
   type,
   className = "",
   style,
   onClick,
+  width = 24,  // 默认宽度
+  height = 24, // 默认高度
 }) => {
   useEffect(() => {
     // 动态加载 IconFont 的 JS 文件
     const script = document.createElement("script");
-    script.src = "//at.alicdn.com/t/c/font_4631415_13046abjt03.js";
+    script.src = "//at.alicdn.com/t/c/font_4631415_rfgmuhb4fb.js";
     document.body.appendChild(script);
 
     return () => {
@@ -43,8 +40,8 @@ const Icon: React.FC<IconProps> = ({
       onClick={onClick}
       style={{
         ...style,
-        height:24,
-        width:24,
+        width: `${width}px`,  // 支持数字或字符串（如 "20px"）
+        height: `${height}px`,
         cursor: onClick ? "pointer" : "default", // 设置光标样式
       }}
     >
@@ -60,4 +57,4 @@ const Icon: React.FC<IconProps> = ({
  * 如果没有 aria-label，屏幕阅读器可能会完全忽略图标，或者读取一些无意义的内容（例如图标的类名）。
  */
 
-export default Icon;
+export default MyIcon;
