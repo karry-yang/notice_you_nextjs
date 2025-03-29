@@ -1,4 +1,4 @@
-import { TaskItem } from '../types/TaskItem'; 
+import { TaskItem } from '../types/modelType/TaskItem'; 
 export const Tasks: TaskItem[] = [
   {
     task_id: 1,

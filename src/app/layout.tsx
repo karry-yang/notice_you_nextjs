@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import React from "react";
-import ClientLayout from "./ClientLayout"; // 客户端组件
-import theme from "@/theme/themeConfig"; // 自定义主题配置
+import ClientLayout from "./ClientLayout"; 
+// import theme from "@/theme/themeConfig"; // 自定义主题配置
+import ReduxProvider from "@/store/ReduxProvider"; // Redux Provider
 export const metadata: Metadata = {
   title: "NOTICEYOU",
   description: "自律高效 ",
@@ -31,7 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* 引入客户端组件 */}
-        <ClientLayout>{children}</ClientLayout>
+        <ReduxProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </ReduxProvider>
       </body>
     </html>
   );

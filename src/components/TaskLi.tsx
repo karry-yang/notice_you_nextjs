@@ -1,5 +1,5 @@
 import React from "react";
-import  {TaskItem} from "@/types/TaskItem";
+import  {TaskItem} from "@/types/modelType/TaskItem";
 const TaskLi: React.FC<TaskItem> = (TaskItem) => {
   return (
     <div>

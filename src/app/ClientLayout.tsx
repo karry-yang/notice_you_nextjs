@@ -17,42 +17,42 @@ const hideNavbarRoutes = ["/not-found", "/login", "/register", "/index"];
 const items: MenuProps["items"] = [
   {
     key: "/user",
-    icon: <MyIcon type="Myicon-zhanghu" />,
+    icon: <MyIcon type="icon-zhanghu" />,
     label: "用户",
   },
   {
     key: "/task",
-    icon: <MyIcon type="Myicon-mulu" />,
+    icon: <MyIcon type="icon-mulu" />,
     label: "Task",
   },
   {
     key: "/hobit",
-    icon: <MyIcon type="Myicon-mulu" />,
+    icon: <MyIcon type="icon-mulu" />,
     label: "hobit",
   },
   {
     key: "/focus",
-    icon: <MyIcon type="Myicon-mulu" />,
+    icon: <MyIcon type="icon-mulu" />,
     label: "Focus",
   },
   {
     key: "/calendar",
-    icon: <MyIcon type="Myicon-mulu" />,
+    icon: <MyIcon type="icon-mulu" />,
     label: "Calendar",
   },
   {
     key: "/group",
-    icon: <MyIcon type="Myicon-mulu" />,
+    icon: <MyIcon type="icon-mulu" />,
     label: "Group",
   },
   {
     key: "/message",
-    icon: <MyIcon type="Myicon-mulu" />,
+    icon: <MyIcon type="icon-mulu" />,
     label: "Message",
   },
   {
     key: "/publish",
-    icon: <MyIcon type="Myicon-mulu" />,
+    icon: <MyIcon type="icon-mulu" />,
     label: "Publish",
   },
 ];
@@ -145,6 +145,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
                 background: isDarkMode ? "#1a1a1a" : "#ffffff", // 使用 Tailwind 的背景色
                 display: "flex",
                 justifyContent: "space-between",
+                height:"5%"
               }}
             >
               <Button

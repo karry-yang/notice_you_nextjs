@@ -39,3 +39,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # notice_you_nextjs
 noticeyou项目next版本，tailwind学习
 >>>>>>> 096bf03f1e131aeb7a20b81b06606530cec8f818
+

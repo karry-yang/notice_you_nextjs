@@ -3,7 +3,7 @@ import { useSelected, useFocused, RenderElementProps } from "slate-react";
 import { Element, Text, Descendant } from "slate";
 import { CSSProperties } from "react";
 import Image from "next/image";
-import{ CustomText, EmptyText, ParagraphElement, LinkElement, ImageElement, FileElement } from "@/types/slate";
+import{ CustomText, EmptyText, ParagraphElement, LinkElement, ImageElement, FileElement } from "@/types/componentType/slate";
 
 // type CustomElement = ParagraphElement | LinkElement | ImageElement | FileElement;
 

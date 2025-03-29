@@ -1,6 +1,6 @@
 import React from "react";
 import { RenderLeafProps } from "slate-react";
-import { CustomText, EmptyText } from "../types/slate";
+import { CustomText, EmptyText } from "../types/componentType/slate";
 const renderLeaf = ({ attributes, children, leaf }: RenderLeafProps) => {
   const hasMark = (leaf: CustomText | EmptyText, key: keyof CustomText): boolean => {
     return key in leaf && !!leaf[key as keyof typeof leaf];
