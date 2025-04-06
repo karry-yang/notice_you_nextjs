@@ -4,6 +4,7 @@ module.exports = {
     content: [
         './src/app/**/*.{js,ts,jsx,tsx}', // 包含 app 目录下的所有文件
         './src/components/**/*.{js,ts,jsx,tsx}', // 包含 components 目录下的所有文件
+        './src/layout/*.{js,ts,jsx,tsx}', // 包含 layout 目录下的所有文件
     ],
     theme: {
         extend: {

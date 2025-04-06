@@ -4,7 +4,10 @@ import taskSlice from './slices/taskSlice'
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      employees: taskSlice
+      tasks: taskSlice
     }
   })
 }
+
+export type RootState = ReturnType<ReturnType<typeof makeStore>['getState']>;
+export type AppDispatch = ReturnType<typeof makeStore>['dispatch'];
